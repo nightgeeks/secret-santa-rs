@@ -8,3 +8,4 @@ edition = "2018"
 
 [dependencies]
 rand = "0.8.0"
+lettre = "0.10.0-alpha.4"
