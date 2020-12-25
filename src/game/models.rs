@@ -1,30 +1,27 @@
 use core::fmt;
+use std::collections::HashSet;
 use std::error::Error;
 use std::fmt::{Display, Formatter};
 
-use super::inner_models::*;
 
-#[derive(Debug)]
-pub struct Player<'a> {
-    pub id: u32,
-    pub name: &'a str,
-    pub email: &'a str,
-    pub group_id: Option<u32>,
+pub type ParticipantId = u32;
+pub type GroupId = u32;
+pub type Groups = HashSet<GroupId>;
+
+
+#[derive(Clone, Debug)]
+pub struct Participant {
+    pub id: ParticipantId,
+    pub name: String,
+    pub email: String,
+    pub groups: Groups,
 }
 
-impl<'a> From<&'a Participant> for Player<'a> {
-    fn from(participant: &'a Participant) -> Self {
-        Player {
-            id: participant.id,
-            name: participant.name.as_str(),
-            email: participant.email.as_str(),
-            group_id: participant.group_id,
-        }
-    }
-}
+pub type Sender<'t> = &'t Participant;
+pub type Receiver<'t> = &'t Participant;
 
 pub struct GameResult<'game> {
-    pub gifting_order: Vec<(Player<'game>, Player<'game>)>,
+    pub gifting_order: Vec<(Sender<'game>, Receiver<'game>)>,
 }
 
 impl GameResult<'_> {

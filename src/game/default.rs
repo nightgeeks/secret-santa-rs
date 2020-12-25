@@ -1,7 +1,7 @@
 use super::api::*;
-use super::inner_models::*;
 use super::models::*;
 use rand::prelude::SliceRandom;
+use std::collections::HashSet;
 
 pub struct DefaultSecretSanta {
     participants: Vec<Participant>,
@@ -16,19 +16,24 @@ impl Default for DefaultSecretSanta {
 }
 
 impl SecretSantaGame for DefaultSecretSanta {
-    fn add_with_group(&mut self, name: String, email: String, group: Option<u32>) -> Player {
+    fn get_by_id(&self, id: ParticipantId) -> Option<&Participant> {
+        self.participants.get(id as usize)
+    }
+
+    fn add_with_group(&mut self, name: String, email: String, groups: Groups) -> ParticipantId {
+        let id = self.participants.len() as u32;
         let participant = Participant {
-            id: self.participants.len() as u32,
+            id,
             name,
             email,
-            group_id: group,
+            groups,
         };
 
         self.participants.push(participant);
-        return Player::from(self.participants.last().unwrap());
+        return id;
     }
 
-    fn remove(&mut self, _player: Player) -> Result<(), GameError> {
+    fn remove(&mut self, _id: ParticipantId) -> Result<(), GameError> {
         Result::Err(GameError::NotSupported(String::from("remove")))
     }
 
@@ -55,17 +60,16 @@ impl SecretSantaGame for DefaultSecretSanta {
 fn find_sender_receiver<'a>(
     senders: &mut Vec<&'a Participant>,
     receivers: &mut Vec<&'a Participant>,
-) -> Result<(Player<'a>, Player<'a>), GameError> {
+) -> Result<(Sender<'a>, Receiver<'a>), GameError> {
     let sender = senders.pop().ok_or(GameError::UnexpectedGameBehavior)?;
     let position = receivers
         .iter()
         .position(|&receiver| {
-            sender.id != receiver.id
-                && (sender.group_id.is_none() || sender.group_id != receiver.group_id)
+            sender.id != receiver.id && sender.groups.intersection(&receiver.groups).count() == 0
         })
         .ok_or(GameError::UnexpectedGameBehavior)?;
     let receiver = receivers.swap_remove(position);
-    Result::Ok((Player::from(sender), Player::from(receiver)))
+    Result::Ok((sender, receiver))
 }
 
 #[cfg(test)]
@@ -76,9 +80,11 @@ mod tests {
     fn play_with_groups() {
         let mut game = DefaultSecretSanta::default();
         let email = "foo@email.com";
-        for gr in 0..10 {
-            for s in 0..100 {
-                game.add_with_group(format!("Player {}", s * gr), email.into(), Some(gr));
+        for gr in 1..10 {
+            for s in 1..100 {
+                let mut hs = Groups::with_capacity(1);
+                hs.insert(gr);
+                game.add_with_group(format!("Player {}", s * gr), email.into(), hs);
             }
         }
 
@@ -87,7 +93,7 @@ mod tests {
         let ok = result.unwrap();
         for (sender, receiver) in ok.gifting_order.iter() {
             assert_ne!(sender.id, receiver.id);
-            assert_ne!(sender.group_id, receiver.group_id);
+            assert_eq!(sender.groups.intersection(&receiver.groups).count(), 0);
         }
     }
 
@@ -104,5 +110,32 @@ mod tests {
         for (sender, receiver) in ok.gifting_order.iter() {
             assert_ne!(sender.id, receiver.id);
         }
+    }
+
+    #[test]
+    fn get_participant_by_index() {
+        let mut game = DefaultSecretSanta::default();
+        let player_email = "player@email.com";
+        let player_name = "Target player";
+        let player_groups: Groups = vec![1, 2, 3].into_iter().collect();
+
+        for s in 0..10 {
+            game.add(format!("Player {}", s), "foo@email.com".into());
+        }
+        let id = game.add_with_group(
+            player_name.into(),
+            player_email.into(),
+            player_groups.clone(),
+        );
+        for s in 0..10 {
+            game.add(format!("Player {}", s), "foo@email.com".into());
+        }
+        let player = game.get_by_id(id);
+
+        assert!(player.is_some());
+        let p = player.unwrap();
+        assert_eq!(p.email, player_email);
+        assert_eq!(p.name, player_name);
+        assert_eq!(p.groups, player_groups);
     }
 }

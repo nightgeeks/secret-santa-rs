@@ -1,6 +1,5 @@
 pub mod api;
 mod default;
-mod inner_models;
 pub mod models;
 
 pub use api::SecretSantaGame;

@@ -12,7 +12,16 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="994df852-26c4-4e89-a32e-6020cfa51c6b" name="Default Changelist" comment="" />
+    <list default="true" id="994df852-26c4-4e89-a32e-6020cfa51c6b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/email/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/email/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/api.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/api.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/default.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/default.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/inner_models.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/models.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/models.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +56,7 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../nightgeeks/secret_santa_fl" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -54,11 +64,58 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
-    <property name="settings.editor.selected.configurable" value="language.rust.rustfmt" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
-  <component name="RunManager" selected="Cargo.Test email::tests::send_email">
+  <component name="RunManager" selected="Cargo.Test default::tests">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test default::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package secret_santa --lib game::default::tests" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test email::tests::send_email" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package secret_santa --lib email::tests::send_email -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test game::default::tests::get_participant_by_index" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package secret_santa --lib game::default::tests::get_participant_by_index -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test game::default::tests::play_with_groups" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package secret_santa --lib game::default::tests::play_with_groups -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="allFeatures" value="false" />
@@ -85,34 +142,6 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test secret_santa::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package secret_santa --lib secret_santa::tests" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="channel" value="DEFAULT" />
-      <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
-      <option name="backtrace" value="SHORT" />
-      <envs />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test secret_santa::tests::it_works" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package secret_santa --lib secret_santa::tests::it_works -- --exact" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="channel" value="DEFAULT" />
-      <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
-      <option name="backtrace" value="SHORT" />
-      <envs />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Test" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="command" value="test --package secret_santa --lib tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -127,17 +156,13 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Test default::tests" />
+        <item itemvalue="Cargo.Test game::default::tests::play_with_groups" />
+        <item itemvalue="Cargo.Test game::default::tests::get_participant_by_index" />
         <item itemvalue="Cargo.Test email::tests::send_email" />
         <item itemvalue="Cargo.Test game::tests" />
-        <item itemvalue="Cargo.Test secret_santa::tests" />
-        <item itemvalue="Cargo.Test secret_santa::tests::it_works" />
       </list>
     </recent_temporary>
   </component>
@@ -159,7 +184,10 @@
       <workItem from="1608670602658" duration="5885000" />
       <workItem from="1608710869216" duration="1424000" />
       <workItem from="1608712302218" duration="3659000" />
-      <workItem from="1608716663081" duration="3575000" />
+      <workItem from="1608716663081" duration="3612000" />
+      <workItem from="1608723560433" duration="450000" />
+      <workItem from="1608891109441" duration="4179000" />
+      <workItem from="1608906764181" duration="498000" />
     </task>
     <task id="LOCAL-00001" summary="implemented:&#10;&#10;- create pairs [sender] -&gt; [receiver]&#10;- respect groups&#10;&#10;TODO:&#10;- set of groups">
       <created>1608676453065</created>
@@ -182,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608719639178</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="configs">
+      <created>1608721496009</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1608721496009</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,7 +244,15 @@
     <MESSAGE value="implemented:&#10;&#10;- create pairs [sender] -&gt; [receiver]&#10;- respect groups&#10;&#10;TODO:&#10;- set of groups" />
     <MESSAGE value="changed game file structure" />
     <MESSAGE value="smtp client" />
-    <option name="LAST_COMMIT_MESSAGE" value="smtp client" />
+    <MESSAGE value="configs" />
+    <option name="LAST_COMMIT_MESSAGE" value="configs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="CidrExceptionBreakpoint" />
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

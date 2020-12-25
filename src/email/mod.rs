@@ -1,7 +1,8 @@
+use std::error::Error;
+
+use lettre::{Message, SmtpTransport, Transport};
 use lettre::message::Mailbox;
 use lettre::transport::smtp::authentication::Credentials;
-use lettre::{Message, SmtpTransport, Transport};
-use std::error::Error;
 
 // TODO - make external
 pub const SMTP_USERNAME: &str = "heartshaped20box@gmail.com";
