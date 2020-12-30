@@ -13,14 +13,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="994df852-26c4-4e89-a32e-6020cfa51c6b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/email/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/email/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/api.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/api.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/default.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/default.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/inner_models.rs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/models.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/models.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,12 +61,7 @@
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
-  <component name="RunManager" selected="Cargo.Test default::tests">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Cargo.Test email::tests::send_email">
     <configuration name="Test default::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package secret_santa --lib game::default::tests" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -158,10 +148,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Test email::tests::send_email" />
         <item itemvalue="Cargo.Test default::tests" />
         <item itemvalue="Cargo.Test game::default::tests::play_with_groups" />
         <item itemvalue="Cargo.Test game::default::tests::get_participant_by_index" />
-        <item itemvalue="Cargo.Test email::tests::send_email" />
         <item itemvalue="Cargo.Test game::tests" />
       </list>
     </recent_temporary>
@@ -187,7 +177,9 @@
       <workItem from="1608716663081" duration="3612000" />
       <workItem from="1608723560433" duration="450000" />
       <workItem from="1608891109441" duration="4179000" />
-      <workItem from="1608906764181" duration="498000" />
+      <workItem from="1608906764181" duration="925000" />
+      <workItem from="1609095150879" duration="1171000" />
+      <workItem from="1609314680546" duration="1642000" />
     </task>
     <task id="LOCAL-00001" summary="implemented:&#10;&#10;- create pairs [sender] -&gt; [receiver]&#10;- respect groups&#10;&#10;TODO:&#10;- set of groups">
       <created>1608676453065</created>
@@ -217,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608721496009</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="multiple groups">
+      <created>1608907278262</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608907278262</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,7 +244,8 @@
     <MESSAGE value="changed game file structure" />
     <MESSAGE value="smtp client" />
     <MESSAGE value="configs" />
-    <option name="LAST_COMMIT_MESSAGE" value="configs" />
+    <MESSAGE value="multiple groups" />
+    <option name="LAST_COMMIT_MESSAGE" value="multiple groups" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

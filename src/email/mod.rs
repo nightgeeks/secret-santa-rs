@@ -1,8 +1,9 @@
 use std::error::Error;
 
 use lettre::{Message, SmtpTransport, Transport};
-use lettre::message::Mailbox;
+use lettre::message::{Mailbox, SinglePart};
 use lettre::transport::smtp::authentication::Credentials;
+use lettre::message::header::ContentType;
 
 // TODO - make external
 pub const SMTP_USERNAME: &str = "heartshaped20box@gmail.com";
@@ -73,11 +74,14 @@ impl EmailClient {
     }
 
     pub fn send(&self, email: Email) -> Result<(), lettre::transport::smtp::Error> {
+        let part = SinglePart::builder()
+            .content_type(ContentType::html())
+            .body(email.body);
         let message = Message::builder()
             .from(self.sender.clone().into())
             .to(email.receiver.clone().into())
             .subject(email.subject)
-            .body(email.body)
+            .singlepart(part)
             .unwrap();
 
         self.mailer.send(&message).map(|_| ())
@@ -87,9 +91,16 @@ impl EmailClient {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::fs::File;
+    use std::io::Read;
 
     #[test]
     fn send_email() {
+        let mut html_file = File::open("D:\\Development\\Projects\\pets\\secret_santa\\index.html").unwrap();
+        let mut html = String::new();
+        html_file.read_to_string(&mut html);
+
+
         let client = EmailClient::new(
             String::from(SMTP_USERNAME),
             String::from(APP_PASSWORD),
@@ -100,7 +111,7 @@ mod tests {
         let email = Email::new(
             Client::new("Osoleses".to_string(), "qqvsorrow@gmail.com".to_string()),
             "Secret Santa".to_string(),
-            "Your target is: 1234567890".to_string(),
+            html,
         );
 
         let result = client.send(email);
